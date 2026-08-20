@@ -1,115 +1,71 @@
-# Tawsila (توصيله)
+# 🚕 Tawsila (توصيلة) — Inter-City Travel & Logistics Platform
 
-A full-stack MERN application that connects freelance drivers with passengers through real-time trip management, flexible booking, and role-based dashboards.
-
-
+> **A full-stack MERN application that connects freelance drivers with passengers through real-time trip management, flexible booking, and role-based dashboards.**
 
 [![React](https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Backend-Node.js_|_Express_|_MongoDB-green?style=for-the-badge&logo=node.js)](https://nodejs.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![React Query](https://img.shields.io/badge/React%20Query-TanStack-FF4154?style=for-the-badge&logo=react-query)](https://tanstack.com/query/latest)
 
+---
+
+## 📌 Project Overview
+
+### **The Problem We Solve:**
+Inter-city travel often lacks direct communication between passengers looking for custom rides and freelance drivers seeking full trip schedules without relying on rigid traditional agencies.
+
+### **The Solution:**
+**Tawsila** establishes a dynamic two-sided marketplace for rides:
+* **Passenger Requests:** Passengers browse scheduled trips or submit custom ride requests.
+* **Driver Claiming Engine:** Drivers view open requests and claim them with one click, auto-generating trips.
+* **Role-Based Access Control (RBAC):** Strict JWT separation ensuring customized experiences for Client and Driver accounts.
+* **Data Efficiency:** Optimized server state using TanStack Query and lean MongoDB schema queries (`.populate()` & `.select()`).
 
 ---
 
-## Overview
+## 📸 Screenshots & Showcase
 
-Tawsila is a logistics platform built for inter-city travel. Passengers can browse and book scheduled trips or submit custom travel requests; drivers can view open requests and claim them to auto-generate trip listings — creating a dynamic, two-sided transportation marketplace.
+| **🚕 Platform Landing & Overview** | **📋 Available Trips & Booking System** |
+| :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/c6a203a5-c525-437f-9dd9-52f9e6ee10e0" alt="Tawsila Landing Page" width="100%" /> |<img width="1920" height="956" alt="APEXSTORE - Brave 4_30_2026 5_51_24 AM" src="https://github.com/user-attachments/assets/577a0251-9fa5-4ea6-bd68-876520a582b0" />  |
 
----
-
-## Features
-
-### Passenger Experience
-- Search and filter scheduled trips by route, date, and availability
-- Submit custom travel requests for specific destinations or times
-- Real-time booking confirmation once a driver claims a request
-
-### Driver Experience
-- Live feed of open custom requests with one-click claiming
-- Automatic trip schedule generation upon request acceptance
-- Profile management for vehicle details and contact information
-
-### Platform-Wide
-- **Role-Based Access Control (RBAC):** JWT-authenticated sessions with strict route and data access separation between `Client` and `Driver` roles
-- **Optimized Data Fetching:** TanStack Query (React Query) handles server-state synchronization, eliminating redundant API calls across dashboards
-- **API Efficiency:** MongoDB `.populate()` and `.select()` minimize payload size and improve response latency
+| **👨‍✈️ About Us & Ride Claiming** |
+| :---: |
+| <img width="1920" height="968" alt="APEXSTORE - Brave 4_30_2026 5_51_34 AM" src="https://github.com/user-attachments/assets/238c12f6-2a83-4b98-a0d6-be1a6dccc902" /> |
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack & Architecture
 
 | Layer | Technologies |
 |---|---|
-| Frontend | React.js, Tailwind CSS, Lucide React, Framer Motion |
-| State Management | TanStack Query, Context API |
-| Backend | Node.js, Express.js |
-| Database | MongoDB (Mongoose ODM) |
-| Authentication | JWT with secure cookie/header storage |
-| Tooling | Vite, Axios, React Hook Form |
-|UI/UX|Fully responsive components with Framer Motion animations and RTL support.| 
----
-
-## Architecture
-
-The backend follows a **Controller → Service → Repository** pattern to enforce clean separation of concerns:
-
-- **Auth Middleware** — Validates JWT tokens and attaches the authenticated user identity to `req.user`
-- **Route Protection** — Restricts endpoint access by role (e.g., only drivers may claim custom requests)
-- **Data Layer** — Mongoose queries are optimized with field selection and relation population to keep responses lean
+| **Frontend** | React.js, TypeScript, Tailwind CSS, Lucide React, Framer Motion |
+| **State Management** | TanStack Query (React Query), React Context API |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB (Mongoose ODM) |
+| **Authentication** | JWT (JSON Web Tokens) with RBAC |
+| **Tooling & Utilities** | Vite, Axios, React Hook Form |
 
 ---
 
-## Getting Started
+## 🏗️ System Architecture
+
+The backend follows a clean **Controller → Service → Repository** pattern to maintain high scalability:
+
+* **Auth Middleware:** Validates JWT tokens and attaches authenticated identities to `req.user`.
+* **Route Protection:** Limits access strictly by role (e.g., claiming custom requests is restricted solely to Drivers).
+* **Data Layer Optimization:** Mongoose queries leverage field selection and relationship population to minimize network payload size.
+
+---
+
+## ⚙️ Getting Started
 
 ### Prerequisites
-- Node.js ≥ 18
-- MongoDB instance (local or Atlas)
+* Node.js ≥ 18
+* MongoDB Instance (Local or Atlas)
 
-### Clone the Repository
-
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/Ahmedmoharam22/Taswsila.git
+git clone [https://github.com/Ahmedmoharam22/Taswsila.git](https://github.com/Ahmedmoharam22/Taswsila.git)
 cd Taswsila
-```
-
-### Environment Configuration
-
-Create a `.env` file in the root directory:
-
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secure_secret_key
-```
-
-### Install Dependencies
-
-```bash
-# Install backend dependencies
-npm install
-
-# Install frontend dependencies
-cd client && npm install
-```
-
-### Run the Application
-
-```bash
-# From the root directory
-npm run dev
-```
-
----
-
-## Roadmap
-
-- **Real-Time Notifications** — Socket.io integration to push instant alerts when a driver accepts a request
-- **Earnings Dashboard** — Financial tracking panel for drivers to monitor trip history and monthly revenue
-- **Geolocation** — Google Maps API integration for distance calculation and route visualization
-
----
-
-## License
-
-This project is open source. See [LICENSE](./LICENSE) for details.
